@@ -44,7 +44,7 @@ namespace eFincasWeb.Controllers
             if (response == null)
                 return NoContent();
 
-            return Ok(new { response });
+            return Ok(response);
         }
 
         /// <summary>
@@ -57,7 +57,7 @@ namespace eFincasWeb.Controllers
         {
             var data = _mapper.Map<Conta>(request);
             var response = await _contaRepository.RegistrarConta(data);
-            return Ok(new { response });
+            return Ok(response);
         }
 
         /// <summary>
