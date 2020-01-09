@@ -66,13 +66,15 @@ namespace eFincasWeb.Controllers
         /// <param name="request"></param>
         /// <returns></returns>
         [HttpPut("atualizar")]
-        public ActionResult<Response> AtualizarConta(AtualizarContaRequest request)
+        public async Task<IActionResult> AtualizarConta(int id, AtualizarContaRequest request)
         {
-            var response = new Response
-            {
-                message = "Item atualizado com sucesso"
-            };
-            return response;
+            id = request.Id;
+            if (request == null || id == 0)
+                return BadRequest();
+
+            var data = _mapper.Map<Conta>(request);
+            var response = await _contaRepository.AtualizarConta(id, data);
+            return Ok(response);
         }
 
         /// <summary>
@@ -81,13 +83,14 @@ namespace eFincasWeb.Controllers
         /// <param name="request"></param>
         /// <returns></returns>
         [HttpDelete("deletar")]
-        public ActionResult<Response> DeletarConta(int id)
+        public async Task<IActionResult> DeletarConta(int id)
         {
-            var response = new Response
-            {
-                message = "Item deletado com sucesso"
-            };
-            return response;
+            if (id == 0)
+                return BadRequest();
+
+            _contaRepository.DeleteConta(id);
+
+            return NoContent();
         }
         #endregion
     }

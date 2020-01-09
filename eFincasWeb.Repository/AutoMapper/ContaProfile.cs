@@ -15,6 +15,11 @@ namespace eFincasWeb.Repository.AutoMapper
                 .ForMember(c => c.Descricao, d => d.MapFrom(e => e.Descricao))
                 .ForMember(c => c.Valor, d => d.MapFrom(e => e.Valor))
                 .ForMember(c => c.DataCriacao, d => d.MapFrom(e => e.DataCriacao)).ReverseMap();
+
+            CreateMap<AtualizarContaRequest, Conta>()
+                .ForMember(c => c.Descricao, d => d.MapFrom(e => e.Descricao))
+                .ForMember(c => c.Valor, d => d.MapFrom(e => e.Valor))
+                .ForMember(c => c.DataCriacao, d => d.MapFrom(e => e.DataCriacao)).ReverseMap();
         }
     }
 }

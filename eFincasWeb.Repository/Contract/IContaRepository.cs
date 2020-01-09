@@ -10,5 +10,7 @@ namespace eFincasWeb.Repository.Contract
     {
         Task<List<Conta>> Listar();
         Task<Conta> RegistrarConta(Conta conta);
+        Task<Conta> AtualizarConta(int id, Conta conta);
+        void DeleteConta(int id);
     }
 }
