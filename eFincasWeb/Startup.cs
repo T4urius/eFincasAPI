@@ -35,6 +35,7 @@ namespace eFincasWeb
             //services.AddSingleton<FincasDataContext>();
             services.AddTransient<ILoginRepository, LoginRepository>();
             services.AddTransient<IContaRepository, ContaRepository>();
+            services.AddTransient<IHistoricoRepository, HistoricoRepository>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 

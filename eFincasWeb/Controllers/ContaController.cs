@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using eFincasWeb.Domain.Entity.Conta;
+using eFincasWeb.Domain.Entity.Historico;
 using eFincasWeb.Model.Request.Conta;
 using eFincasWeb.Model.Response;
 using eFincasWeb.Model.Response.Conta;
@@ -20,14 +21,16 @@ namespace eFincasWeb.Controllers
     {
         #region Variaveis
         private readonly IContaRepository _contaRepository;
+        private readonly IHistoricoRepository _historicoRepository;
         private readonly IMapper _mapper;
         #endregion
 
         #region Construtor
-        public ContaController(IMapper mapper, IContaRepository contaRepository)
+        public ContaController(IMapper mapper, IContaRepository contaRepository, IHistoricoRepository historicoRepository)
         {
             _mapper = mapper;
             _contaRepository = contaRepository;
+            _historicoRepository = historicoRepository;
         }
         #endregion
 
@@ -87,6 +90,11 @@ namespace eFincasWeb.Controllers
         {
             if (id == 0)
                 return BadRequest();
+
+            var data = await _contaRepository.GetById(id);
+            var map = _mapper.Map<Historico>(data);
+
+            await _historicoRepository.RegistrarHistorico(map);
 
             _contaRepository.DeleteConta(id);
 

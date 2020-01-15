@@ -1,5 +1,6 @@
 ﻿using eFincasWeb.Domain.Entity;
 using eFincasWeb.Domain.Entity.Conta;
+using eFincasWeb.Domain.Entity.Historico;
 using eFincasWeb.Domain.Entity.Usuario;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -17,11 +18,13 @@ namespace eFincasWeb.Repository.Context
 
         public virtual DbSet<Usuario> Usuario { get; set; }
         public virtual DbSet<Conta> Conta { get; set; }
+        public virtual DbSet<Historico> Historico { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfiguration(new Maps.UsuarioMap());
             modelBuilder.ApplyConfiguration(new Maps.ContaMap());
+            modelBuilder.ApplyConfiguration(new Maps.HistoricoMap());
         }
     }
 }

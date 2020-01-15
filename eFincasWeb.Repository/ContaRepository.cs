@@ -55,6 +55,18 @@ namespace eFincasWeb.Repository
             }
         }
 
+        public async Task<Conta> GetById(int id)
+        {
+            var data = await _context.Conta.Where(e => e.Id.Equals(id)).FirstAsync();
+
+            if (data == null)
+            {
+                return null;
+            }
+
+            return data;
+        }
+
         public async Task<List<Conta>> Listar()
         {
             var data = await _context.Conta.AsQueryable().OrderByDescending(e => e.DataCriacao).ToListAsync();
