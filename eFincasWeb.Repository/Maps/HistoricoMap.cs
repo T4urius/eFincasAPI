@@ -31,6 +31,10 @@ namespace eFincasWeb.Repository.Maps
             .HasColumnName("valor")
             .IsRequired();
 
+            builder.Property(c => c.Tipo)
+            .HasColumnName("tipo")
+            .IsRequired();
+
             builder.Property(c => c.DataInclusao)
                 .HasColumnName("data_inclusao")
                 .IsRequired();

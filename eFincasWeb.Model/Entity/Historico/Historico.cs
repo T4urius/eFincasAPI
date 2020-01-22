@@ -11,5 +11,6 @@ namespace eFincasWeb.Domain.Entity.Historico
         public string Descricao { get; set; }
         public decimal Valor { get; set; }
         public DateTime DataInclusao { get; set; }
+        public string Tipo { get; set; }
     }
 }

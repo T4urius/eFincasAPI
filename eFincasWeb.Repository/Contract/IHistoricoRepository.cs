@@ -8,6 +8,7 @@ namespace eFincasWeb.Repository.Contract
 {
     public interface IHistoricoRepository
     {
+        Task<IList<Historico>> ListarHistorico();
         Task<Historico> RegistrarHistorico(Historico historico);
     }
 }

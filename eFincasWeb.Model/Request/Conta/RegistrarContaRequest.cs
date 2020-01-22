@@ -9,5 +9,6 @@ namespace eFincasWeb.Model.Request.Conta
         public string Descricao { get; set; }
         public decimal Valor { get; set; }
         public DateTime DataCriacao { get; set; }
+        public string Tipo { get; set; }
     }
 }

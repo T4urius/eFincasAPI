@@ -24,10 +24,14 @@ namespace eFincasWeb.Repository.Maps
                 .HasColumnName("descricao")
                 .HasMaxLength(100)
                 .IsRequired();
-                
+
 
             builder.Property(c => c.Valor)
                 .HasColumnName("valor")
+                .IsRequired();
+
+            builder.Property(c => c.Tipo)
+                .HasColumnName("tipo")
                 .IsRequired();
 
             builder.Property(c => c.DataCriacao)

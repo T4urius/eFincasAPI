@@ -19,6 +19,16 @@ namespace eFincasWeb.Repository
             _context = context;
         }
 
+        public async Task<IList<Historico>> ListarHistorico()
+        {
+            var data = await _context.Historico.AsQueryable().OrderByDescending(e => e.DataExclusao).ToListAsync();
+
+            if (data != null)
+                return data;
+         
+            return null;
+        }
+
         public async Task<Historico> RegistrarHistorico(Historico historico)
         {
             var data = await _context.Historico.Where(e => e.Id.Equals(historico.Id)).ToListAsync();
